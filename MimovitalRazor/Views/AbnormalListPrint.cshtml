@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "~/Views/Shared/PrintLayout.cshtml";
+}
+@model MimovitalRazor.ViewModel.CSVDataViewModel;
+<page size="A4" layout="landscape">
+    <div>
+        @if (ViewBag.msg != "")
+        {
+        <script type="text/javascript" charset="uft-8">
+            window.onload = function () {
+                alert("表示に必要なパラメータが不足しています。システム管理者までお問い合わせください。");
+        };
+        </script>
+        }
+        else
+        {
+            <header>
+                <h2 class="title50 font_l center font_color_orange"><strong>Mimovital Data System</strong></h2>
+                <h3 class="title25 font_m center"><strong>ミモバイタル・データシステム</strong></h3>
+            </header>
+            <h4 style="padding-left: 10px;"><strong>個人ID @Model.babyID の異常データ集計</strong></h4>
+
+            <p> 個人ID =@Model.babyID </p>
+            <p> 発生日 = @Model.riskDate  </p>
+            <p> 体動判定異常(秒) = @Model.bodyMovementNGByDate </p>
+            <p> 心拍判定異常(秒) = @Model.heartRateNGByDate  </p>
+            <p> 呼吸判定異常(秒) = @Model.respRateNGByDate  </p>
+
+            <table id="dtBasicExample" class="table">
+                <thead>
+                    <tr>
+                        <th class="td"><b>番号</b></th>
+                        <th class="td"><b>体動判定</b></th>
+                        <th class="td"><b>心拍判定</b></th>
+                        <th class="td"><b>呼吸判定</b></th>
+                        <th class="td"><b>体動レベル(左)</b></th>
+                        <th class="td"><b>体動レベル(右)</b></th>
+                        <th class="td"><b>心拍レベル(左)</b></th>
+                        <th class="td"><b>心拍レベル(右)</b></th>
+                        <th class="td"><b>呼吸レベル(左)</b></th>
+                        <th class="td"><b>呼吸レベル(右)</b></th>
+                        <th class="td"><b>発生時</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (@ViewBag.abnormalDataDetailsList.Count > 0)
+                    {
+                        @for (int i = 0; i < ViewBag.abnormalDataDetailsList.Count; i++)
+                        {
+                            string bodyResult = "";
+                            string heartResult = "";
+                            string respResult = "";
+                            int num = 0;
+                            num = i + 1;
+                            @if (ViewBag.abnormalDataDetailsList[i].bodyResult == 1)
+                            {
+                                bodyResult = "異常";
+                            }
+                            else
+                            {
+                                bodyResult = "正常";
+                            }
+                            if (ViewBag.abnormalDataDetailsList[i].heartResult == 1)
+                            {
+                                heartResult = "異常";
+                            }
+                            else
+                            {
+                                heartResult = "正常";
+                            }
+                            if (ViewBag.abnormalDataDetailsList[i].respResult == 1)
+                            {
+                                respResult = "異常";
+                            }
+                            else
+                            {
+                                respResult = "正常";
+                            }
+                            <tr>
+                                <td class="td">@num</td>
+                                <td class="td">@bodyResult</td>
+                                <td class="td">@heartResult</td>
+                                <td class="td">@respResult</td>
+                                <td class="td">@ViewBag.abnormalDataDetailsList[i].levelBodyMotionL</td>
+                                <td class="td">@ViewBag.abnormalDataDetailsList[i].levelBodyMotionR</td>
+                                <td class="td">@ViewBag.abnormalDataDetailsList[i].levelHeartL</td>
+                                <td class="td">@ViewBag.abnormalDataDetailsList[i].levelHeartR</td>
+                                <td class="td">@ViewBag.abnormalDataDetailsList[i].levelRespirationL</td>
+                                <td class="td">@ViewBag.abnormalDataDetailsList[i].levelRespirationR</td>
+                                <td class="td">@ViewBag.abnormalDataDetailsList[i].occurDate.ToString("yyyy-MM-dd")</td>
+                            </tr>
+
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    </page>

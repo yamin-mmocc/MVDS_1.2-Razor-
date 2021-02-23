@@ -1,0 +1,299 @@
+/*20201012_yamin_マスターページ_新規作成*/
+body {
+  width: 100vw;
+    height: 100vh;
+    font-size: 0.875rem;
+    overflow-x: hidden;
+}
+
+.headtitle {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+}
+
+#navcolor {
+    background: #f77f00;
+}
+
+.footernavbar {
+    position: relative;
+    min-height: 80px;
+    margin-bottom: 0px;
+    margin-top: 25px;
+    border: 1px solid transparent;
+}
+
+.footercolor
+{
+    background-color: #203354;
+}
+
+.flex-fill { 
+   flex:1 1 auto;
+}
+
+.maincolor
+{
+    height: 480px;
+    background-color: #dcdcdc;
+}
+
+.footertext
+{
+    color: #F77F00;
+    margin-left: 500px;
+    margin-top: 30px;
+}
+
+#footersmall
+{
+    color: #FFFFFF;
+    font-size: 10px;
+    margin-left: 550px;
+    margin-top: 0px;
+}
+
+.alignleft {
+    color: #F77F00;
+    float: left;
+    margin-left: 500px;
+    margin-top: 20px;
+    font-size: 25px;
+    
+}
+.alignright {
+    float: right;
+    color: #FFFFFF;
+/*    font-size: 10px;*/
+    margin-right:  510px;
+    margin-top: 32px;
+    font-size: 13px;
+    
+}
+
+.testfont{
+    /*font-family: 'Changa';font-size: 25px;*/
+    font-family: 'Black Ops One';font-size: 25px;    
+}
+
+.text-white{
+    color: #FFFFFF;
+    text-align: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.labeltext
+{
+    font-size: 12px;
+    margin-right: 15px;
+    text-align:center;
+}
+
+.babyIDtext {
+    font-size: 12px;
+    margin-right: 15px;
+    text-align: left;
+}
+
+.errlabeltext
+{
+    font-size: 12px;
+    margin-right: 15px;
+    color: #FF0000;
+    font-weight:bold;
+}
+
+.buttonsize{
+    height: 30px;
+    width: 120px;
+    margin-right: 10px;
+    background: #f77f00;
+}
+
+.disablebuttonsize{
+    height: 30px;
+    width: 120px;
+    margin-right: 10px;
+    background: #7a7a7a;
+}
+
+
+.w3-check, .w3-radio {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    top: 6px;
+}
+
+.w3-animate-input {
+    transition: width 0.4s ease-in-out;
+}
+
+ 
+
+ .box {
+  background: #666666;
+  color: #ffffff;
+  width: 250px;
+  padding: 10px;
+  margin: 1em auto;
+}
+p {
+  margin: 1.5em 0;
+  padding: 0;
+}
+input[type="checkbox"] {
+  visibility: hidden;
+}
+label {
+  cursor: pointer;
+}
+input[type="checkbox"] + label:before {
+  border: 0.5px solid #2196f3;
+  background: #ffffff;
+  content: "\00a0";
+  display: inline-block;
+  font: 16px/1em sans-serif;
+  height: 16px;
+  margin: 0 .25em 0 0;
+  padding: 0;
+  vertical-align: top;
+  width: 16px;
+}
+
+input[type="checkbox"]:checked + label:before {
+  background: #2196f3;
+  color: #ffffff;
+  content: "\2713";
+  text-align: center;
+}
+input[type="checkbox"]:checked + label:after {
+  font-weight: bold;
+}
+
+.boxstyle
+{
+  /*width: 100%;*/
+  padding: 6px 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.row {
+    margin-left: -13px;
+    margin-right: -13px;
+}
+
+.totallabel{
+    margin-top: 10px;
+    margin-left: 0px;
+}
+
+
+.totalbtn {
+    float: right;
+    color: #FFFFFF;
+/*    font-size: 10px;*/
+    margin-right:  30px;
+    margin-top: 0px;
+    font-size: 13px;
+    
+}
+
+
+
+.tooltip  
+        {  
+            display: inline;  
+            position: relative;  
+            text-decoration: none; 
+            visibility: visible; 
+/*            top: 0px;  
+            left: 4px; */ 
+        }  
+        .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+/*.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+@media (min-width: 992px)
+.col-md-6 {
+    width: 0%;
+    height: 0;
+    visibility: hidden;
+}*/
+
+div.dataTables_wrapper div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    visibility: hidden;
+    visibility: hidden;
+}
+
+.dataTables_length
+{
+  width: 0%;
+  height: 0;
+}
+
+table.dataTable td.dataTables_empty, table.dataTable th.dataTables_empty {
+    text-align: center;
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}
+
+.bordered, .bordered>tbody>tr>td, .bordered>tbody>tr>th, .bordered>tfoot>tr>td, .bordered>tfoot>tr>th, .bordered>thead>tr>td, .bordered>thead>tr>th {
+    border: 1px solid #A9A9A9;
+}
+
+#td {
+    border: 1px solid #dddddd;
+    text-align: center;
+}
+

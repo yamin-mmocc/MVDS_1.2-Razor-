@@ -1,0 +1,231 @@
+/*20201012_yamin_マスターページ_新規作成*/
+:root {
+    --main: rgb(247,127,0);
+    --secondary: rgb(0,48,73);
+    --success: rgb(40,167,69);
+    --danger: rgb(214,40,40);
+    --warning: rgb(252,191,73);
+    --light: rgb(234,226,183);
+    --white: rgb(255,255,255);
+}
+
+textarea {
+    resize: none;
+}
+
+.form-control:focus, .custom-select:focus {
+    border-color: var(--main);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(247, 127, 0, 0.25);
+}
+
+a {
+    color: var(--secondary)
+}
+
+    a:hover {
+        color: var(--main);
+    }
+
+.bg-tcs {
+    background: var(--main);
+}
+
+.tcs-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+/* 3 Start Navbar*/
+#tcs-Navbar {
+    height: 60px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+#tcs-Navbar .nav{
+    justify-content:flex-end;
+}
+#tcs-Navbar .nav .nav-item .nav-link{
+    color: var(--white);
+}
+#tcs-Navbar .burger{
+    display: none;
+    cursor: pointer;
+}
+#tcs-Navbar .burger div{
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background: var(--main);
+}
+/* 3 End Navbar*/
+
+/* Start Intro JS - PLEASE DON'T DELETE THIS*/
+.introjs-helperLayer {
+    background: transparent;
+}
+
+.introjs-overlay {
+    display: none;
+}
+
+.introjs-helperLayer:before {
+    opacity: 0;
+    content: '';
+    position: fixed;
+    width: inherit;
+    height: inherit;
+    box-shadow: 0 0 0 1000em rgba(0,0,0, .7);
+    opacity: 1;
+}
+
+.introjs-helperLayer:after {
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 1000;
+}
+/* End Intro JS*/
+
+
+/* Start Responsive */
+@media screen and (min-width:1024px) {
+    #Admin_Card .col-lg-3, .col-md-6, .col-sm-12 {
+        padding-right: 0px;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .sidebar-sticky ul li {
+        padding: 0;
+    }
+
+    #Admin_Card .col-lg-3, .col-md-6, .col-sm-12 {
+        padding-right: 15px;
+    }
+}
+
+@media screen and (max-width:992px) {
+    #panel_Compose {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    #tcs-Navbar {
+        background: #f8f9fa;
+        border-bottom:3px solid var(--main);
+    }
+    #tcs-Navbar .navbar-brand{
+        color: var(--main);
+    }
+    #tcs-Navbar .burger{ 
+        display: block;
+    }
+    #tcs-Navbar .nav {
+        background: var(--main);
+        position: absolute;
+        left: 0;
+        height: calc(100vh - 60px);
+        top: 60px;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 85vw;
+        padding-left:1rem;
+        z-index: 200;
+    }
+    #tcs-Navbar .nav .nav-item{
+        padding:1rem 0;
+    }
+    #tcs-help{
+        display:none;
+    }
+    #tcs-Navbar .nav .nav-item .nav-link{
+        color:var(--secondary);
+        font-weight: 700;
+    }
+        #tcs-Navbar .nav .nav-item .nav-link:hover{
+            color:var(--white);
+        }
+        #tcs-Navbar .nav .nav-item .nav-link.active {
+            color: var(--white);
+        }
+
+    #tcs-Navbar ion-icon{
+        font-size:1rem;
+        vertical-align:text-bottom;
+        margin-right:1rem;
+    }
+
+    #panel_Compose {
+        width: 100%;
+        margin-right: 0;
+        height: 100%;
+        border-top: 0px;
+        z-index:9000;
+    }
+
+    .compose-float {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        z-index: 100;
+        min-width: 50px;
+        min-height: 50px;
+        background: var(--main);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    .ascore .form-row .col-12{
+        margin-bottom:1rem;
+    }
+
+    #Admin_Card .col-lg-3, .col-md-6, .col-sm-12 {
+        padding-right: 15px;
+    }
+}
+
+@media screen and (max-width:576px) {
+    
+}
+.mimoheader
+{
+   color: #ffffff;
+   text-align: center;
+}
+
+.mimocontainer
+{
+    height: 400px; 
+    background-color: #dcdcdc;
+}
+
+.mimofooter
+{
+   height: 80px;
+   background-color:  #203354;
+}
+
+.mimomaincontainer
+{
+   height: 1000px;
+}
+
+.strong
+{
+    color: #ffffff;
+}
+/*End Responsive*/

@@ -1,0 +1,145 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model MimovitalRazor.ViewModel.CSVDataViewModel;
+<head>
+    <link href="~/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/js/jquery-1.8.2.js"></script>
+    <script src="~/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form method="post" id="searchForm">
+            <header class="gird row mr-0 mb-3">
+                <h2 class="headtitle">ミモバイタル・データ検索一覧</h2>
+                <br />
+            </header>
+            <div class="row mr-0 mb-3">
+                <label class="labeltext"> 個人ID </label>
+                <span title="個人IDとは国 ID(3桁)+地域ID(3桁)+保育園ID(3桁)+個人ID(4桁)" placeholder="1234567890123" class="demoTooltip labeltext boxstyle">@Html.TextBoxFor(m => m.babyID,new { Class = "demoTooltip babyIDtext boxstyle" })</span>
+                @if (ViewBag.Status == 0)
+                {
+                    <input type="checkbox" id="body" asp-for="bodyCheckflag" checked />
+                    <label for="body" class="labeltext"> 体動判定異常</label>
+                    <input type="checkbox" id="heart" asp-for="heartCheckflag" checked />
+                    <label for="heart" class="labeltext"> 心拍判定異常</label>
+                    <input type="checkbox" id="resp" asp-for="respCheckflag" checked />
+                    <label for="resp" class="labeltext"> 呼吸判定異常</label>
+                }
+                else
+                {
+                    <input type="checkbox" id="body" asp-for="bodyCheckflag" checked="@Model.bodyCheckflag" />
+                    <label for="body" class="labeltext"> 体動判定異常</label>
+                    <input type="checkbox" id="heart" asp-for="heartCheckflag" checked="@Model.heartCheckflag" />
+                    <label for="heart" class="labeltext"> 心拍判定異常</label>
+                    <input type="checkbox" id="resp" asp-for="respCheckflag" checked="@Model.respCheckflag" />
+                    <label for="resp" class="labeltext"> 呼吸判定異常</label>
+                }
+            </div>
+
+            <div class="row mr-0 mb-3">
+                <button type="submit" name="action" class="btn bg-tcs text-white buttonsize" id="btnSearch" value="検索"
+                        asp-controller="CSVDataMaster"
+                        asp-action="Search">
+                    検索
+                </button>
+                <a href="~/CSVDataMaster/Index/">
+                    <input type="button" name="action" class="btn bg-tcs text-white buttonsize" value="クリア" />
+                </a>
+            </div>
+            <div>
+                <label id="errorMsg" class="errlabeltext totallabel">@ViewBag.errorMsg</label>
+                <span asp-validation-for="babyID" data-valmsg-replace="true" class="errlabeltext totallabel"></span>
+            </div>
+            <div class="row mr-0 mb-3">
+                @if (ViewBag.Status == 1)
+                {
+                    <label for="result" class="labeltext totallabel">検索結果 :  @ViewBag.SearchDataList.Count 件</label>
+                    @if (ViewBag.btnAbnormalFlag == 0)
+                    {
+                        <input type="button" name="action" id="caltotal" value="異常データ集計" class="btn bg-tcs text-white disablebuttonsize totalbtn" disabled>
+                    }
+                    else if (ViewBag.btnAbnormalFlag == 1)
+                    {
+                        <a href="@Url.Action("AbnormalDataTotalList","CSVDataMaster",new {babyid=Model.babyID,btnFlag=ViewBag.btnAbnormalFlag})">
+                            <input type="button" id="caltotal" value="異常データ集計" class="btn bg-tcs text-white buttonsize totalbtn">
+                        </a>
+                    }
+                }
+            </div>
+            <div>
+                @if (ViewBag.Status == 1)
+                {
+                    <table id="dtBasicExample" class="table table-striped bordered row mr-0 mb-3" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th class="em-hidden labeltext">個人ID</th>
+                                <th class="em-hidden labeltext">センサーID </th>
+                                <th class="em-hidden labeltext">部屋ID</th>
+                                <th class="em-hidden labeltext">スタッフID</th>
+                                <th class="em-hidden labeltext">体動判定</th>
+                                <th class="em-hidden labeltext">心拍判定</th>
+                                <th class="em-hidden labeltext">呼吸判定</th>
+                                <th class="em-hidden labeltext">日付</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var data in ViewBag.SearchDataList)
+                            {
+                                string bodyResult = "";
+                                string heartResult = "";
+                                string respResult = "";
+                                @if (@data.bodyResult == 1)
+                                {
+                                    bodyResult = "異常";
+                                }
+                                else
+                                {
+                                    bodyResult = "正常";
+                                }
+                                if (@data.heartResult == 1)
+                                {
+                                    heartResult = "異常";
+                                }
+                                else
+                                {
+                                    heartResult = "正常";
+                                }
+                                if (@data.respResult == 1)
+                                {
+                                    respResult = "異常";
+                                }
+                                else
+                                {
+                                    respResult = "正常";
+                                }
+                                <tr>
+                                    <td class="em-hidden labeltext">@data.babyID</td>
+                                    <td class="em-hidden labeltext">@data.sensorID</td>
+                                    <td class="em-hidden labeltext">@data.roomID</td>
+                                    <td class="em-hidden labeltext">@data.staffID</td>
+                                    <td class="em-hidden labeltext">@bodyResult</td>
+                                    <td class="em-hidden labeltext">@heartResult </td>
+                                    <td class="em-hidden labeltext">@respResult</td>
+                                    <td class="em-hidden labeltext">@data.occurDate.ToString("yyyy-MM-dd")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </form>
+    </div>    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable({
+                "paging": true,
+                "searching": false,
+                "iDisplayLength": 7
+            });
+        });
+    </script>
+</body>

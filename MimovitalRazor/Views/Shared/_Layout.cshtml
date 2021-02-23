@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/mimo.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+</head>
+    <header>
+        <nav class="navbar navbar-dark bg-tcs sticky-top" style=" background: #f77f00;">
+            <a class="navbar-brand" href="#"><strong class="strong" style="color:#FFFFFF">ミモバイタル・データシステム</strong></a>
+        </nav>        
+        <br />
+    </header>
+    <body class="d-flex flex-column maincolor">
+        <environment include="Development">
+            <script src="~/js/jquery-3.1.0.min.js"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="~/js/jquery-3.1.0.min.js"></script>
+        </environment>
+        @RenderSection("Scripts", required: false)
+        <main role="main" class="container-fluid flex-fill maincolor">
+            <div id="content" style="opacity: 1;">
+                @RenderBody()
+            </div>
+        </main>
+
+        <footer class="footernavbar sticky-top footercolor">
+            <p class="alignleft testfont">OCC</p>
+            <p class="alignright">Copyright@OCC Corporation. All Rights Reserved</p>
+        </footer>
+    </body>
+    </html>

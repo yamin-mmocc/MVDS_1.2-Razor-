@@ -1,0 +1,50 @@
+/*20210202_ヤミン_【MVDS_1.2対応】CSS_ModeltoModel対応*/
+　  .title25 { width: 100%; }
+    .title50 { width: 100%; }
+    .center {  text-align: center; }
+    .color_white { background-color: #fff; }
+    .font_m { font-size: 12; }
+    .font_l { font-size: 18; }
+    .font_color_orange { color: #F77F00; }
+    .table { border: 1px solid black; border-collapse: collapse;}
+    .td { border: 1px solid #dddddd; text-align: center;}
+    .error {
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    }
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .closebtn:hover {
+      color: black;
+    }
+    p {
+      line-height: 10px;
+      padding-left: 10px;
+    }
+    page[size="A4"][layout="landscape"] {
+      background: white;
+      display: block;
+      margin: 0 auto;
+      width: 29.7cm;
+      height: 19.5cm;  
+    }
+    table{
+      width: 96%;
+      margin-left: 10px;
+    }
+
+    #printtitle
+    {
+      text-align: center;
+      font-size: 18;
+      color: F77F00;
+    }
